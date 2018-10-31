@@ -38,7 +38,7 @@ class LaunchScreen extends Component {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={this.onGoToLoginButtonPressed}>
-                    <Text style={styles.text1}> Next</Text>
+                    <Text style={styles.text1}>{'->'}</Text>
                 </TouchableOpacity>
             </View>
         );

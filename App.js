@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Platform, View, StatusBar } from 'react-native';
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import configureStore from "./src/store";
 import ErrorBoundary from "./src/components/common/errorBoundary";
@@ -26,7 +26,7 @@ export default class App extends Component {
 					<ErrorBoundary>
 						<View style={{ height: Platform.OS == 'ios' ? 20 : 0 }}>
 							<StatusBar
-								backgroundColor={'red'}
+								backgroundColor={'#F2F2F2'}
 								barStyle="light-content"
 							/>
 						</View>
