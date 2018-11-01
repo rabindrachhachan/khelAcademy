@@ -1,0 +1,18 @@
+{
+    "Welcome to KhelAcademy":"Welcome to KhelAcademy",
+    "Enter your mobile":"Enter your mobile",
+    "Enter your email":"Enter your email",
+    "Mobile":"Mobile",
+    "Email Id":"Email Id",
+    "Country Code":"Country Code",
+    "Enter a valid mobile number":"Enter a valid mobile number",
+    "Enter a valid email address":"Enter a valid email address",
+    "Use mobile":"Use mobile",
+    "Use email":"Use email",
+    "GET OTP":"GET OTP",
+    "Please enter OTP received by SMS/email":"Please enter OTP received by SMS/email",
+    "OTP taking too long to reach you?":"OTP taking too long to reach you?",
+    "Resend OTP":"Resend OTP",
+    "By clicking on Login, you agree to the Terms of Service and Privacy Policy":"By clicking on Login, you agree to the Terms of Service and Privacy Policy",
+    "LOGIN":"LOGIN"
+}

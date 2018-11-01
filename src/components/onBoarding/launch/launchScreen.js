@@ -6,6 +6,10 @@ import {
     TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import ActionButton from 'react-native-action-button';
+import {colors} from "../../../constants";
+import I18n from "../../../translation/i18n"
 
 import backGroundImage from "../../../assests/common/launchBg.jpg"
 import logo from "../../../assests/common/logo.jpg"
@@ -33,13 +37,16 @@ class LaunchScreen extends Component {
         return (
             <View style={styles.bottomContainer}>  
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={styles.text1}>{'Welcome to KhelAcademy'}</Text>
+                    <Text style={styles.text1}>{I18n.t('Welcome to KhelAcademy')}</Text>
                 </View>
-                <TouchableOpacity
-                    style={styles.button}
+                <ActionButton 
+                    buttonColor={'white'}
+                    position ={'center'}
+                    renderIcon={() =>
+                        <Icon name="arrow-right" size={24} color={colors.lightseagreen} type='regular' />
+                    }
                     onPress={this.onGoToLoginButtonPressed}>
-                    <Text style={styles.text1}>{'->'}</Text>
-                </TouchableOpacity>
+                </ActionButton>
             </View>
         );
     }

@@ -1,68 +1,141 @@
 import {
     StyleSheet,
-    Dimensions
+    Dimensions,
+    Platform
 } from "react-native";
-
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 
+import { colors } from "../../../constants";
+
 const styles = StyleSheet.create({
 
     mainContainer: {
-        height: '100%',
-        width: '100%',
-
-    },
-
-    backGround: {
-        position: 'absolute',
-        width: DEVICE_WIDTH,
-        height: DEVICE_HEIGHT
+        flex: 1,
+        backgroundColor: 'white',
+        paddingBottom: 15
     },
 
     topContainer: {
-        height: '75%',
+        flex: 0.6,
         width: '100%',
         flexDirection: 'column',
         paddingVertical: '10%',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-    },
-
-    bottomContainer: {
-        height: '25%',
-        width: '100%',
         justifyContent: 'center',
-        paddingTop:10,
-        paddingBottom: 10,
-        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        backgroundColor: 'transparent'
+    },
+    bottomContainer: {
+        flex: 0.4,
+        width: '100%',
+        paddingBottom: 10,
+        paddingHorizontal: 20,
+        flexDirection: 'column',
+        backgroundColor: 'transparent',
+        justifyContent: 'space-between'
     },
 
-    button:{
-        width:44,
-        height: 44,
-        borderColor: 'black', 
-        borderRadius:22,
-        backgroundColor:'blue',
-        justifyContent:'center',
-        alignItems:'center',
-        alignSelf:'center',
-        marginBottom: 10
+    countryPickerContainer: {
+        height: 40,
+        flexDirection: 'row',
+        width: DEVICE_WIDTH * 0.3,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black'
+    },
+
+    countryPicker: {
+        width: DEVICE_WIDTH * 0.3,
+        height: 40,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingHorizontal:7,
+    },
+
+    textInputContainerMob: {
+        width: DEVICE_WIDTH * 0.5,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black'
+    },
+
+    textInputContainerEmail: {
+        width: DEVICE_WIDTH * 0.9,
+        height: 50,
+        justifyContent: 'flex-start',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black'
+    },
+
+    textInput: {
+        width: DEVICE_WIDTH * 0.9,
+        fontSize: 18,
+        height: 40,
+        lineHeight: 20,
+        alignSelf: 'flex-start',
+        backgroundColor: 'transparent',
+    },
+
+    textInputMob: {
+        width: DEVICE_WIDTH * 0.5,
+        height: 40,
+        backgroundColor: 'transparent',
+        alignSelf: 'flex-start',
+        letterSpacing: 5,
+    },
+
+    charImage: {
+        position: 'absolute',
+    },
+
+    button: {
+        width: DEVICE_WIDTH * 0.6,
+        alignSelf: 'center',
+        backgroundColor: colors.green
     },
 
     text1: {
-        fontSize: 22,
-        marginTop: 5
+        fontSize: 15,
+        fontWeight: '500',
+        color: colors.green,
+        backgroundColor: 'transparent'
+
     },
-    appLogo: {
-        height: 80,
-        width: 80
+
+    flexLarge: {
+        flex: Platform.OS == 'ios' ? 1 : 0.6
+    },
+    flexSmall: {
+        flex: 0.4
+    },
+    patternBackgroundImage: {
+        resizeMode: 'cover'
+    },
+    chatImageView: {
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    chatColoredImage: {
+        resizeMode: 'cover'
+    },
+
+    countryCodeWrapper: {
+        flex: 0.4,
+        paddingRight: 10,
+    },
+
+    phoneNumberWrapper: {
+        flex: 0.6,
     }
-
-
 });
 
 export default styles;
