@@ -70,8 +70,6 @@ class LoginScreen extends Component {
         this.state.useMobile ?
             this.props.getOTPForUserName((this.state.callingCode + this.state.userName), "PHONE") :
             this.props.getOTPForUserName(this.state.userName, "EMAIL");
-            
-        this.props.navigation.navigate('otpAuthenticate')    
 
     }
 

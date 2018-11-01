@@ -20,7 +20,9 @@ const colors ={
     lightskyblue:'#87CEFA',
     steelblue:'#4682B4',
     royalblue:'#4169E1',
-    blue: '#0000FF'
+    blue: '#0000FF',
+    //white
+    white: '#FFFFFF'
 }
 
 export {OFFLINE_ACTION_TYPES,colors} 

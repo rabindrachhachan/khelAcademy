@@ -4,7 +4,7 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/lib/storage";
 
 import { reducer as network } from 'react-native-offline';
-import loginReducer from "./onBoarding/login";
+import loginReducer from "./onBoarding/reducer.login";
 
 
 

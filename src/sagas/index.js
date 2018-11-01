@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects';
-import {watchUserOnBoarding} from "./onBoarding/onBoarding";
+import {watchUserOnBoarding} from "./onBoarding/saga.onBoarding";
 
 
 //single entry point for all sagas

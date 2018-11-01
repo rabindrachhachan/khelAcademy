@@ -69,8 +69,9 @@ class OTPAuthenticateScreen extends Component {
             this.setState({ isValidOtp: false })
             return
         }
+        this.props.navigation.navigate('home');
 
-        this.props.validateOTP(this.props.requestId, otp);
+        // this.props.validateOTP(this.props.requestId, otp);
     }
 
     onResendOTPButtonPressed = () => {
@@ -145,9 +146,9 @@ class OTPAuthenticateScreen extends Component {
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                     <TouchableDebounce
-                        style={[styles.button, { backgroundColor: colors.PRIMARY_FONT_COLOR }]}
+                        style={[styles.button, { backgroundColor: colors.mediumseagreen }]}
                         onPress={this.onLoginButtonPressed}
-                        disabled={this.props.processingRequest}
+                        disabled={false}
                     >
                         <Text style={{ color: 'white' }} >{I18n.t("LOGIN")}</Text>
                     </TouchableDebounce>

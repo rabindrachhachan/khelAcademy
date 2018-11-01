@@ -6,16 +6,17 @@ import LaunchScreen from "../components/onBoarding/launch/launchScreen";
 import LoginScreen from "../components/onBoarding/login/loginScreen";
 import AuthenticateScreen from "../components/onBoarding/authenticate/authenticateScreen";
 
+import TabNavigator from "./tabNavigator";
+
 
 const AuthNavigator = createStackNavigator({
     launch: { screen: LaunchScreen },
     login: { screen: LoginScreen },
+    otpAuthenticate:{ screen: AuthenticateScreen}
 });
 
 const AppNavigator = createDrawerNavigator({
-    launch: { screen: LaunchScreen },
-    login: { screen: LoginScreen },
-    otpAuthenticate:{ screen: AuthenticateScreen}
+    home: { screen: TabNavigator },
 },
     {
         contentComponent: ({ navigation }) => {
