@@ -66,10 +66,11 @@ class LoginScreen extends Component {
             this.setState({ wrongEntryMesaage: I18n.t("Enter a valid mobile number") });
             return
         }
+        this.props.navigation.navigate('otpAuthenticate')
 
-        this.state.useMobile ?
-            this.props.getOTPForUserName((this.state.callingCode + this.state.userName), "PHONE") :
-            this.props.getOTPForUserName(this.state.userName, "EMAIL");
+        // this.state.useMobile ?
+        //     this.props.getOTPForUserName((this.state.callingCode + this.state.userName), "PHONE") :
+        //     this.props.getOTPForUserName(this.state.userName, "EMAIL");
 
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import { colors } from '../../../constants';
 import HomeScreen from "./homeScreen/homeScreen";
+import CreateScreen from "./createEvent/createEvent";
 import Header from "../../common/header";
 import styles from "../../common/styles"
 
@@ -15,6 +16,12 @@ const HomeStack = createStackNavigator({
             header:<Header title={'Home'} navigation ={navigation} leftIcon ={false}  addIcon ={false} rightIcon ={true}/>
         })
     },
+    createEvent:{
+        screen: CreateScreen,
+        navigationOptions: ({ navigation }) => ({
+            header:<Header title={'Create Event'} navigation ={navigation} leftIcon ={true}  addIcon ={false} rightIcon ={true}/>
+        })
+    }
 
 },
     {

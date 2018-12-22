@@ -6,6 +6,7 @@ import { colors } from "../../constants";
 import styles from './styles';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import backIcon from "../../assests/common/back_icon.png"
 
 const OFFLINE_MODE = "Offline Mode";
 const ONLINE_MODE = "Online Mode";
@@ -69,12 +70,11 @@ class Header extends Component {
                     this.props.navigateTo?this.props.navigation.navigate(this.props.navigateTo)
                     :this.props.navigation.goBack(null) 
                 }>
-				<Icon 
-					color={colors.mediumseagreen} 
-					name={'arrow-left'}
-					size={22}
-					type="regular" 
-				/>
+				<Image
+                    style={styles.icon}
+                    source={backIcon}
+                    tintColor={colors.PRIMARY_FONT_COLOR}
+                />
 			</TouchableOpacity>
 		)
 	}
@@ -96,7 +96,7 @@ class Header extends Component {
                     style={styles.headerRightIcon} 
                     onPress={() => this.props.navigation.navigate('reportIssue')}>
 					<Icon 
-						color={colors.mediumseagreen} 
+						color={colors.blackDark} 
 						name={'ellipsis-v'}
 						size={22}
 						type="regular" 

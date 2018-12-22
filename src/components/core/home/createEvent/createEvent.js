@@ -15,7 +15,7 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import backPattern from "../../../../assests/common/backPattern.png";
 
-class HomeScreen extends Component {
+class CreateScreen extends Component {
     constructor(props) {
         super(props)
     }
@@ -91,4 +91,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateScreen);

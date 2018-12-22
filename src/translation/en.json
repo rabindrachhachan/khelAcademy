@@ -14,5 +14,7 @@
     "OTP taking too long to reach you?":"OTP taking too long to reach you?",
     "Resend OTP":"Resend OTP",
     "By clicking on Login, you agree to the Terms of Service and Privacy Policy":"By clicking on Login, you agree to the Terms of Service and Privacy Policy",
-    "LOGIN":"LOGIN"
+    "LOGIN":"LOGIN",
+    "CREATE NEW EVENT": "CREATE NEW EVENT",
+    "info":"Host your Event with us. Collect online revervations and do more with our services."
 }
