@@ -62,22 +62,22 @@ class CreateScreen extends Component {
     gotoStep =(item)=>{
         switch(item.step){
             case 1:
-                this.props.navigation.navigate('step1',{title:`step ${item.step}}:${item.name}`})
+                this.props.navigation.navigate('step1',{title:`step ${item.step}:${item.name}`})
             break;   
             case 2:
-                this.props.navigation.navigate('step2',{title:`step ${item.step}}:${item.name}`})
+                this.props.navigation.navigate('step2',{title:`step ${item.step}:${item.name}`})
             break; 
             case 3:
-                this.props.navigation.navigate('step3',{title:`step ${item.step}}:${item.name}`})
+                this.props.navigation.navigate('step3',{title:`step ${item.step}:${item.name}`})
             break;     
             case 4:
-                this.props.navigation.navigate('step4',{title:`step ${item.step}}:${item.name}`})
+                this.props.navigation.navigate('step4',{title:`step ${item.step}:${item.name}`})
             break;     
             case 5:
-                this.props.navigation.navigate('step5',{title:`step ${item.step}}:${item.name}`})
+                this.props.navigation.navigate('step5',{title:`step ${item.step}:${item.name}`})
             break;     
             case 6:
-            this.props.navigation.navigate('step6',{title:`step ${item.step}}:${item.name}`})
+            this.props.navigation.navigate('step6',{title:`step ${item.step}:${item.name}`})
             break;
             default:
             break         

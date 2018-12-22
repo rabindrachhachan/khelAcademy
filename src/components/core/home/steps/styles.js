@@ -57,9 +57,25 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 18,
-        color: 'white',
+        color: colors.white,
         alignSelf: 'center'
     },
+    topContainer:{
+        height:200,
+        margin:15,
+        borderColor:colors.grey,
+        borderWidth:0.5,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    topInnerContainer:{
+
+    },
+    image:{
+        height:200,
+        width:'100%',
+    }
 });
 
 export default styles;

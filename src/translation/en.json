@@ -17,5 +17,9 @@
     "LOGIN":"LOGIN",
     "CREATE NEW EVENT": "CREATE NEW EVENT",
     "info":"Host your Event with us. Collect online revervations and do more with our services.",
-    "Get Started":"Get Started"
+    "Get Started":"Get Started",
+    "Event Description":"Event Description",
+    "Event Title":"Event Title",
+    "Next":"Next",
+    "Upload Image":"Upload Image"
 }

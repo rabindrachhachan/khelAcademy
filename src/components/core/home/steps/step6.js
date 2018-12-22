@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    Image,
     TouchableOpacity,
-    FlatList
+    TextInput
 } from "react-native";
 
 import { connect } from "react-redux"
@@ -16,12 +15,13 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import backPattern from "../../../../assests/common/backPattern.png";
 
-class CreateScreen extends Component {
+class Step6Screen extends Component {
     constructor(props) {
         super(props);
         this.state={
-            data :[{step:1,name:'Basic Details'},{step:2,name:'Images'},{step:3,name:'Venue'}
-        ,{step:4,name:'Category'},{step:5,name:'Date & Time'},{step:6,name:'Online Reversations'}]
+            title: null,
+            description: null
+
         }
     }
 
@@ -33,76 +33,43 @@ class CreateScreen extends Component {
         
     }
 
-    renderField1=(step)=>{
-        return (
-            <View style={styles.field1}>
-                <View style={styles.circleView}>
-                    <Text style ={[styles.text,{color:colors.white,alignSelf:'center',paddingTop:2}]}>{step}</Text>
-                </View>
-            </View>
-        )
+    onDescriptionChanged = (text)=>{
+        this.setState({description: text})
     }
-    renderField2=(desc)=>{
-        return (
-            <View style={styles.field2}>
-                <Text style ={[styles.text,{padding:15}]}>{desc}</Text>
-            </View>
-        )
+    onEventTitleChanged =(text)=>{
+        this.setState({title: text})
     }
 
-    renderItem =({item,index})=>{
-        return(
-            <TouchableOpacity style ={styles.itemView} key ={index} onPress={()=>this.gotoStep(item)}>
-                {this.renderField1(item.step)}
-                {this.renderField2(item.name)}
-            </TouchableOpacity>
-        )
+    gotoNextStep = ()=>{
+        this.props.navigation.navigate("step2",{title:`step 2: Images `})
+        // this.props.saveEventItem()
     }
 
-    gotoStep =(item)=>{
-        switch(item.step){
-            case 1:
-                this.props.navigation.navigate('step1',{title:`{"step" ${item.step}}:${item.name}`})
-            break;   
-            case 2:
-                this.props.navigation.navigate('step2',{title:`{"step" ${item.step}}:${item.name}`})
-            break; 
-            case 3:
-                this.props.navigation.navigate('step3',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 4:
-                this.props.navigation.navigate('step4',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 5:
-                this.props.navigation.navigate('step5',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 6:
-            this.props.navigation.navigate('step6',{title:`{"step" ${item.step}}:${item.name}`})
-            break;
-            default:
-            break         
-        }
-    }
-    
     render() {
         return (
             <View style={styles.mainContainer}>
-                {this.state.data && this.state.data.length > 0 &&
-                    <View style={{marginTop:20,flex:1}}>
-                        <FlatList 
-                            data={this.state.data}
-                            extraData={this.state}
-                            listKey={(index) => 'D' + index.toString()}
-                            keyExtractor={(index) => index}
-                            renderItem={this.renderItem}
+                <View style={{marginTop:20,flex:1}}>
+                    <View style={{minHeight:100,width:'100%',marginHorizontal:15}}>
+                        <Text style={styles.text} >{I18n.t("Event Title")}</Text>
+                        <TextInput style={styles.textInput}
+                            placeholder="Add short clear name"
+                            underlineColorAndroid='transparent'
+                            onChangeText={this.onEventTitleChanged}
                         />
                     </View>
-                }
-
+                    <View  style={{minHeight:100,width:'100%',marginHorizontal:15}}>
+                        <Text style={styles.text} >{I18n.t("Event Description")}</Text>
+                        <TextInput style={styles.textInput}
+                            placeholder="Add short clear name"
+                            underlineColorAndroid='transparent'
+                            onChangeText={this.onDescriptionChanged}
+                        />
+                    </View>
+                </View>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => this.gotoNext()}>
-                <Text style={styles.buttonText}>{I18n.t("Get Started")}</Text>
+                    onPress={() => this.gotoNextStep()}>
+                <Text style={styles.buttonText}>{I18n.t("Next")}</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -119,4 +86,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Step6Screen);

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    Image,
     TouchableOpacity,
-    FlatList
+    TextInput,
+    Platform,
+    Animated,
+    ActionSheetIOS
 } from "react-native";
 
 import { connect } from "react-redux"
@@ -12,16 +14,19 @@ import styles from "./styles";
 import { colors } from "../../../../constants";
 import Snackbar from 'react-native-snackbar';
 import I18n from '../../../../translation/i18n';
-import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import backPattern from "../../../../assests/common/backPattern.png";
+import ImagePicker from "react-native-image-crop-picker";
+import BottomSheet from "react-native-js-bottom-sheet";
 
-class CreateScreen extends Component {
+
+
+class Step2Screen  extends Component {
     constructor(props) {
         super(props);
         this.state={
-            data :[{step:1,name:'Basic Details'},{step:2,name:'Images'},{step:3,name:'Venue'}
-        ,{step:4,name:'Category'},{step:5,name:'Date & Time'},{step:6,name:'Online Reversations'}]
+            path: null,
+            overflow: "hidden" ,
+            
         }
     }
 
@@ -33,76 +38,143 @@ class CreateScreen extends Component {
         
     }
 
-    renderField1=(step)=>{
-        return (
-            <View style={styles.field1}>
-                <View style={styles.circleView}>
-                    <Text style ={[styles.text,{color:colors.white,alignSelf:'center',paddingTop:2}]}>{step}</Text>
-                </View>
-            </View>
-        )
-    }
-    renderField2=(desc)=>{
-        return (
-            <View style={styles.field2}>
-                <Text style ={[styles.text,{padding:15}]}>{desc}</Text>
-            </View>
-        )
-    }
 
-    renderItem =({item,index})=>{
-        return(
-            <TouchableOpacity style ={styles.itemView} key ={index} onPress={()=>this.gotoStep(item)}>
-                {this.renderField1(item.step)}
-                {this.renderField2(item.name)}
-            </TouchableOpacity>
-        )
-    }
+    _startAnimation = () => {
+		Animated.sequence([
+			Animated.timing(this.state.height, {
+				toValue: 0,
+				duration: 250
+			}),
+			Animated.timing(this.state.height, {
+				toValue: 150,
+				duration: 500,
+				delay: 75
+			})
+		]).start();
+	};
 
-    gotoStep =(item)=>{
-        switch(item.step){
-            case 1:
-                this.props.navigation.navigate('step1',{title:`{"step" ${item.step}}:${item.name}`})
-            break;   
-            case 2:
-                this.props.navigation.navigate('step2',{title:`{"step" ${item.step}}:${item.name}`})
-            break; 
-            case 3:
-                this.props.navigation.navigate('step3',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 4:
-                this.props.navigation.navigate('step4',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 5:
-                this.props.navigation.navigate('step5',{title:`{"step" ${item.step}}:${item.name}`})
-            break;     
-            case 6:
-            this.props.navigation.navigate('step6',{title:`{"step" ${item.step}}:${item.name}`})
-            break;
-            default:
-            break         
-        }
-    }
+
+
+	_getImageFromStorage = (value) => {
+        this.setState({
+                path: value, 
+                overflow: "hidden" 
+            }, () =>{
+                if(Platform.OS !== "ios") this.bottomSheet.close();
+                this._startAnimation()
+            });
+        
+        this.props.updateValue(this.props.attributes.name, value);
+    };
     
+    _openCamera =()=>{
+        ImagePicker.openCamera({
+            compressImageMaxWidth:360,
+            compressImageMaxHeight:360,
+            compressImageQuality: 1.0,
+            includeBase64: true,
+        }).then(image =>
+            this._getImageFromStorage(image.path)
+        ).catch(e => {
+            if(Platform.OS !== "ios") this.bottomSheet.close();
+            console.log(e)
+        }) 
+    }
+    _openPicker =()=>{
+        ImagePicker.openPicker({
+            compressImageMaxWidth:360,
+            compressImageMaxHeight:360,
+            compressImageQuality: 1.0,
+            includeBase64: true,
+        }).then(image =>
+            this._getImageFromStorage(image.path)
+        ).catch(e => {
+            if(Platform.OS !== "ios") this.bottomSheet.close();
+            console.log(e)
+        }) 
+    }
+
+    renderPreview =(attributes) => {
+        if(typeof this.props.path !=='undefined' && this.props.path !=='null'){
+            this._startAnimation()
+        }
+		return (
+			<TouchableOpacity style={[styles.topContainer,{ borderColor:"#a94442" }]}
+				onPress={
+					Platform.OS === "ios"
+						? this._onPressImage
+						: () => this.bottomSheet.open()
+				}>
+				<Animated.Image
+					resizeMode="cover"
+					source={{ uri:this.props.path? this.props.path: this.state.path}}
+					style={[styles.image,{height: this.state.height}]}
+				/>
+				<View style={[styles.topInnerContainer,{overflow: this.state.overflow}]}>
+                    <Text style={[styles.buttonText,{color:colors.lightskyblue}]}>{I18n.t("Upload Image")}</Text>
+				</View>
+			</TouchableOpacity>
+		);
+    };
+
+    _renderOptions = () => {
+        const options =["Open camera","Select from the gallery","Cancel"];
+    
+		return [
+            {
+				title: options[0],
+                onPress: () => this._openCamera(),
+                icon: (<Icon name="camera" size={24} type={'regular'} color ={'#828282'}/>)
+			},
+			{
+				title: options[1],
+				onPress: () =>this._openPicker(),
+				icon: ( <Icon name="image" size={24} type={'regular'} color ={'#828282'}/>)
+			}
+		];
+	};
+
+    _onPressImage = () => {
+		const options = this.props.options.config.options || this.defaultProps.options;
+		ActionSheetIOS.showActionSheetWithOptions({ options, cancelButtonIndex: 2},
+			buttonIndex => {
+				if (buttonIndex === 0) {
+					this._openCamera()
+				} else if (buttonIndex === 1) {
+					this._openPicker()
+				}
+			}
+		);
+    }
+
+    gotoNextStep = ()=>{
+        this.props.navigation.navigate("step3",{title:`step 3: Venue `})
+        // this.props.saveEventItem()
+    }
+
     render() {
         return (
             <View style={styles.mainContainer}>
-                {this.state.data && this.state.data.length > 0 &&
-                    <View style={{marginTop:20,flex:1}}>
-                        <FlatList 
-                            data={this.state.data}
-                            extraData={this.state}
-                            listKey={(index) => 'D' + index.toString()}
-                            keyExtractor={(index) => index}
-                            renderItem={this.renderItem}
-                        />
-                    </View>
-                }
-
+                <View style={{marginTop:20,flex:1}}>
+                    {this.renderPreview()}
+                </View>
+                {Platform.OS === "android" ? (
+                    <BottomSheet
+                        ref={ref => {
+                            this.bottomSheet = ref;
+                        }}
+                        title={'Choose image from'}
+                        options={this._renderOptions()}
+                        coverScreen={true}
+                        titleFontFamily={styles.titleFontFamily}
+                        styleContainer={styles.styleContainer}
+                        fontFamily={styles.fontFamily}
+                    />
+                ) : null}
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => this.gotoNext()}>
-                <Text style={styles.buttonText}>{I18n.t("Get Started")}</Text>
+                    onPress={() => this.gotoNextStep()}>
+                <Text style={styles.buttonText}>{I18n.t("Next")}</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -119,4 +191,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Step2Screen);
