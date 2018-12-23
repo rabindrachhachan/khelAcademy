@@ -75,6 +75,44 @@ const styles = StyleSheet.create({
     image:{
         height:200,
         width:'100%',
+    },
+    pickerStyle:{
+        backgroundColor: 'transparent',
+        borderBottomColor: '#D9D5DC',
+        borderBottomWidth: 0.5,
+        marginHorizontal: 15,
+        marginVertical: 0,
+        paddingVertical: 15,
+        marginLeft: 20,                    
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    pickerIOS:{
+        backgroundColor: 'red',
+        borderBottomColor: 'grey',
+        borderBottomWidth:0.5,
+        marginHorizontal: 10,
+        marginVertical: 0,
+        marginLeft: 15,
+    },
+    rectangle:{
+        height:100,
+        width:'100%',
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        alignItems:'center'
+    },
+    box:{
+        height:40,
+        width:'45%',
+        flexDirection:'row',
+        borderColor:'grey',
+        borderRadius:4,
+        borderWidth:1,
+        justifyContent:'space-evenly',
+        alignItems:'center'
+
     }
 });
 

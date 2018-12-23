@@ -15,6 +15,7 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import backPattern from "../../../../assests/common/backPattern.png";
 
+
 class Step4Screen extends Component {
     constructor(props) {
         super(props);
