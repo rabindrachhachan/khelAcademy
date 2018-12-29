@@ -23,5 +23,10 @@
     "Next":"Next",
     "Upload Image":"Upload Image",
     "City":"City",
-    "Choose Venue Or Enter":"Choose Venue Or Enter"
+    "Choose Venue Or Enter":"Choose Venue Or Enter",
+    "Event Category":"Event Category",
+    "Event Sub-Category":"Event Sub-Category",
+    "Ticket Name":"Ticket Name",
+    "Ticket Price":"Ticket Price",
+    "Note":"Note"
 }

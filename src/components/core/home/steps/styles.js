@@ -163,6 +163,84 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
+    searchBarHeader:{
+        height:30,
+        width:'80%',
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        marginVertical:5,
+        borderRadius:1,
+        paddingLeft:15,
+        borderColor:'black',
+        
+    },
+    expandableIconHeader:{
+        height:30,
+        width:'20%',
+        flexDirection:'row',
+        marginEnd:15,
+        justifyContent:'center',
+        alignItems:'center',
+        marginVertical:5,
+    
+    },
+    expandableHeader:{
+        marginTop:10,
+        height:40,
+        width:'100%',
+        flexDirection:'row',
+        elevation:1,
+        shadowOpacity:0,
+        backgroundColor: '#fff',
+		shadowRadius: 0,
+        shadowColor: colors.MD_LIGHT_GREY_100,
+		shadowOffset: { height: 2, width:4 },
+		opacity: 1 ,
+		elevation:2,
+		borderColor: Platform.OS =='ios' ? colors.MD_LIGHT_GREY_100 : 'white',
+        borderWidth: Platform.OS =='ios' ? 1 : 0,
+        marginBottom:10
+    },
+
+    modalContainer2: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'column',
+        position: 'absolute',
+        top:'25%',
+        width: '90%',
+        height:"75%",
+        marginHorizontal:'5%',
+        backgroundColor: 'white',
+        borderColor: '#E0E0E0',
+        borderRadius: 5,
+        shadowColor: "#E0E0E0",
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowRadius: 1.61,
+        elevation: 8,
+        borderWidth:1,
+        borderTopColor: '#0089F8',
+        borderTopWidth: 2,
+    },
+    topEventType:{
+        height:80,
+        justifyContent:'space-between',
+        alignItems:'flex-start',
+        borderBottomColor:'#E0E0E0',
+        borderBottomWidth:0.5,
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowRadius: 1.61,
+        elevation:2,
+        shadowColor: "#E0E0E0",
+    }
+
 });
 
 export default styles;

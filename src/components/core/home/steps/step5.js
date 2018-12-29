@@ -186,7 +186,7 @@ class Step5Screen extends Component {
                     <Text  style={{ color: '#ADADAD',paddingStart:5 }}> Starts On:</Text>
                     <View style ={styles.rectangle}>
                         <TouchableOpacity onPress={()=>this.showDatePicker('startDate')} style ={styles.box}>
-                            <Icon name={'calendar-plus'} size={16} type ={'regular'} color ={'orange'} />
+                            <Icon name={'calendar-star'} size={16} type ={'light'} color ={'orange'} />
                             <Text  style={{ color: '#ADADAD',paddingStart:5 }}>
                                 {(startDate && moment(startDate, "Do MMM YYYY").format("Do MMM YYYY")) || "Start On" }
                             </Text>
@@ -205,7 +205,7 @@ class Step5Screen extends Component {
                     <Text  style={{ color: '#ADADAD',paddingStart:5 }}> Ends On:</Text>
                     <View style ={styles.rectangle}> 
                         <TouchableOpacity onPress={()=>this.showDatePicker('endDate')} style ={styles.box}>
-                            <Icon name={'calendar-plus'} size={16} type ={'regular'} color ={'orange'} style={'regular'} />
+                            <Icon name={'calendar-star'} size={16} type ={'regular'} color ={'orange'} />
                             <Text  style={{ color: '#ADADAD',paddingStart:5 }}>
                                 {(endDate && moment(endDate, "Do MMM YYYY").format("Do MMM YYYY")) || "Start On"}
                             </Text>
