@@ -112,8 +112,57 @@ const styles = StyleSheet.create({
         borderWidth:1,
         justifyContent:'space-evenly',
         alignItems:'center'
+    },
+    modalContainer: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'column',
+        position: 'absolute',
+        top:'0%',
+        width: '90%',
+        height:"25%",
+        backgroundColor: 'white',
+        borderColor: '#E0E0E0',
+        borderRadius: 5,
+        shadowColor: "#E0E0E0",
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowRadius: 1.61,
+        elevation: 8,
+        borderWidth:1,
+        borderTopColor: '#0089F8',
+        borderTopWidth: 2,
+    },
 
-    }
+    filterLinkInner: {
+        marginTop:10,
+        height:30,
+        alignSelf: 'stretch',
+        backgroundColor:colors.white,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+    },
+    filterText: {
+        width:'100%',
+        alignSelf:'stretch',
+        color:colors.grey,
+        fontFamily: 'roboto',
+        fontSize: 12,
+        lineHeight: 14,
+        paddingLeft:15,
+    },
+    textInput: {
+        width: '100%',
+        height: 40,
+        borderColor: colors.blacklight,
+        borderBottomWidth: 1,
+        backgroundColor: 'transparent',
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    },
 });
 
 export default styles;

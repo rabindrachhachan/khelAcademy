@@ -11,7 +11,23 @@ export function* getOTPForUserName(action) {
     }
 }
 
+export function* reRequestOTPForUser(action) {
+    let response = yield callAPI(UserOnboardingAPI.reRequestOTPForUser, action.payload, types.RESEND_OTP_FAILURE);
+    if (response) {
+        yield put({ type: types.RESEND_OTP_SUCCESS, payload: response.data })
+    }
+}
+
+export function* validateOTP(action) {
+    let response = yield callAPI(UserOnboardingAPI.validateOTP, action.payload, types.VALIDATE_OTP_FAILURE);
+    if (response) {
+        yield put({ type: types.VALIDATE_OTP_SUCCESS, payload: response.data })
+    }
+}
+
 
 export function* watchUserOnBoarding() {
     yield takeEvery(types.GET_OTP_FOR_USERNAME_REQUEST, getOTPForUserName);
+    yield takeEvery(types.RESEND_OTP_REQUEST,reRequestOTPForUser);
+    yield takeEvery(types.VALIDATE_OTP_REQUEST,validateOTP)    
 }

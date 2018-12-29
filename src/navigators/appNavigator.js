@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { createSwitchNavigator,createStackNavigator,createDrawerNavigator } from "react-navigation"
 
-import LoadingScreen from "../components/common/loadingScreen";
 import LaunchScreen from "../components/onBoarding/launch/launchScreen";
 import LoginScreen from "../components/onBoarding/login/loginScreen";
 import AuthenticateScreen from "../components/onBoarding/authenticate/authenticateScreen";
 
 import TabNavigator from "./tabNavigator";
+import AuthLoading from "./authLoading";
 
 
 const AuthNavigator = createStackNavigator({
@@ -26,12 +26,12 @@ const AppNavigator = createDrawerNavigator({
 );
 
 const RootNavigator = createSwitchNavigator({
-    loading: LoadingScreen,
+    authLoading: AuthLoading,
     auth: AuthNavigator,
     app: AppNavigator
 
 }, {
-        initialRouteName: "loading"
+        initialRouteName: "authLoading"
     });
 
 export default RootNavigator;

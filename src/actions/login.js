@@ -10,9 +10,12 @@ export function getOTPForUserName(userName,loginType) {
     }
 }
 
-export function resetError() {
+export function resendOTP(requestId){
     return {
-        type: types.RESET_ERROR
+        type: types.RESEND_OTP_REQUEST,
+        payload: {
+            "requestId": requestId,
+        }
     }
 }
 
@@ -23,5 +26,11 @@ export function validateOTP(requestId, otp) {
             "requestId": requestId,
             "otp": otp
         }
+    }
+}
+
+export function resetError() {
+    return {
+        type: types.RESET_ERROR
     }
 }

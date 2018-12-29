@@ -237,7 +237,46 @@ const styles = StyleSheet.create({
     },
     headerRightIcon:{
         paddingRight:20
-    }
+    },
+    modalContainer: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'column',
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        height:"70%",
+        backgroundColor: 'white',
+        borderColor: '#E0E0E0',
+        borderRadius: 5,
+        shadowColor: "#E0E0E0",
+        shadowOffset: {
+            width: 2,
+            height: 4,
+        },
+        shadowRadius: 1.61,
+        elevation: 8,
+        borderWidth:1,
+        borderTopColor: '#0089F8',
+        borderTopWidth: 2,
+    },
+    filterLinkInner: {
+        marginTop:10,
+        height:30,
+        alignSelf: 'stretch',
+        backgroundColor:colors.white,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+    },
+    filterText: {
+        width:'100%',
+        alignSelf:'stretch',
+        color:colors.grey,
+        fontFamily: 'roboto',
+        fontSize: 12,
+        lineHeight: 14,
+        paddingLeft:15,
+    },
 
 });
 
