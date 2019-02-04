@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -112,6 +113,7 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
         vectorDrawables.useSupportLibrary = true
+        resValue "string", "build_config_package", "com.khelacademy"
     }
     splits {
         abi {
@@ -143,6 +145,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-config')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-snackbar')
     compile project(':react-native-vector-icons')

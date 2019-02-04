@@ -5,6 +5,8 @@ import storage from "redux-persist/lib/storage";
 
 import { reducer as network } from 'react-native-offline';
 import loginReducer from "./onBoarding/reducer.login";
+import manageEventReducer from "./manageEvent/reducer.event"
+
 
 
 
@@ -15,15 +17,22 @@ const persistConfigNetworkMonitor = {
     blacklist: ['isConnected']
 }
 
-const sensiveInfoPersistConfig = {
-    key:"TOKEN",
+const persistConfigLogin = {
+    key:"login",
+    storage:storage,
+    stateReconciler: autoMergeLevel2
+}
+
+const persistConfigEvent = {
+    key:"login",
     storage:storage,
     stateReconciler: autoMergeLevel2
 }
 
 const AppReducer = combineReducers({
     network: persistReducer(persistConfigNetworkMonitor, network),
-    LoginReducer: persistReducer(sensiveInfoPersistConfig, loginReducer),
+    LoginReducer: persistReducer(persistConfigLogin, loginReducer),
+    ManageEventReducer: persistReducer(persistConfigEvent,manageEventReducer)
 
 });
 

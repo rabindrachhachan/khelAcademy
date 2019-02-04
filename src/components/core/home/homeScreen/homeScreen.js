@@ -15,13 +15,15 @@ import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import backPattern from "../../../../assests/common/backPattern.png";
 
+import {createEvent} from "../../../../actions/manageEvent"
+
 class HomeScreen extends Component {
     constructor(props) {
         super(props)
     }
 
     componentDidMount() {
-    
+        this.props.createEvent()
     }
 
     componentWillUnmount() {
@@ -88,7 +90,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-
+    createEvent
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
